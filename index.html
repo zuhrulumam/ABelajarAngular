@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BelajarAngular">
+<head>
+	<title>Belajar Angular</title>
+</head>
+<body ng-controller="appController as app"> <!-- controller and aliases -->
+
+	<div ng-repeat="item in app.items"> <!-- Looping -->
+		<!-- Get Item Object-->
+		<h2>{{item.name}}</h2>
+		<p>{{item.telp}}</p>
+		<p>{{item.email}}</p>
+
+		<!-- show/hide statement -->
+		<p ng-show="item.age > 17">Your age is {{item.age}}</p>
+		<p ng-show="item.age < 17">You are too young</p>
+		
+		<!-- filter uppercase,orderBy, date, currency etc google it-->
+		<p>Your name again {{item.name | uppercase}}</p>
+
+		<!-- length in array -->
+		<p ng-show="item.sisters.length">You have sister</p>
+
+		<!-- images with ng-src -->
+		<img ng-src="{{item.image}}" width="200px">
+
+	</div>
+
+
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="controller/app.js"></script>
+</body>
+</html>
