@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="BelajarAngular">
 <head>
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
 	<title>Belajar Angular</title>
 </head>
 <body ng-controller="appController as app"> <!-- controller and aliases -->
@@ -14,20 +15,104 @@
 		<!-- show/hide statement -->
 		<p ng-show="item.age > 17">Your age is {{item.age}}</p>
 		<p ng-show="item.age < 17">You are too young</p>
+
+		<!-- ng-click and ng-class behaviour -->
+		<ul class="nav nav-pills" ng-init="tab = 1">
+  			<li ng-class="{active:tab === 1}">
+  				<a href ng-click="tab = 1">Name</a>
+  			</li>
+  			<li ng-class="{active:tab === 2}">
+  				<a href ng-click="tab = 2">Sister</a>
+  			</li>
+  			<li ng-class="{active:tab === 3}">
+  				<a href ng-click="tab = 3">Image</a>
+  			</li>
+  			<li ng-class="{active:tab === 4}">
+  				<a href ng-click="tab = 4">Comment</a>
+  			</li>
+		</ul>
+		<!-- {{tab}} -->
+		<div class="panel panel-default" ng-show="tab === 1">
+	  			<!-- filter uppercase,orderBy, date, currency etc google it-->
+			 <p>Your name again {{item.name | uppercase}}</p>
+		</div>
+
+		<div class="panel panel-default" ng-show="tab === 2">
+  			<!-- length in array -->
+			<p ng-show="item.sisters.length">You have sister</p>
+		</div>
+
+		<div class="panel panel-default" ng-show="tab === 3">
+  			<!-- images with ng-src -->
+			<img ng-src="{{item.image}}" width="200px">
+		</div>
+
+		<div class="panel panel-default" ng-show="tab === 4">
+			<li ng-repeat="comment in item.comments">
+				<blockquote>
+					<b>Username : {{comment.username}}</b>
+					<p>{{comment.text}}</p>
+				</blockquote>
+			</li>
+			
+  			<!-- forms -->
+	  		<form ng-controller="CommentController as CommentCtrl" ng-submit="CommentCtrl.addComment(item)">
+	  			<li>
+					<blockquote>
+						<b>Username : {{CommentCtrl.comment.username}}</b>
+						<p>{{CommentCtrl.comment.text}}</p>
+					</blockquote>
+				<li>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">@</span>
+				  <input ng-model="CommentCtrl.comment.username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+				</div>
+
+				<div class="input-group">
+				  <textarea ng-model="CommentCtrl.comment.text" class="form-control" placeholder="comment" cols="100" rows="5"></textarea>
+	  			</div>
+
+	  			<input type='submit' value="Submit">
+	  		</form>
+		</div>
+
+		<!-- ng-click and ng-class behaviour with controller -->
+		<!-- <section ng-controller="TabController as panel">
+			<ul class="nav nav-pills" >
+	  			<li ng-class="{active:panel.isIsset()}">
+	  				<a href ng-click="panel.setTab(1)">Name</a>
+	  			</li>
+	  			<li ng-class="{active:panel.isIsset()}">
+	  				<a href ng-click="panel.setTab(2)">Sister</a>
+	  			</li>
+	  			<li ng-class="{active:panel.isIsset()}">
+	  				<a href ng-click="panel.setTab(3)">Image</a>
+	  			</li>
+			</ul> -->
+			
+			<!-- <div class="panel panel-default" ng-show="panel.tab === 1"> -->
+	  			<!-- filter uppercase,orderBy, date, currency etc google it-->
+				<!-- <p>Your name again {{item.name | uppercase}}</p>
+			</div>
+
+			<div class="panel panel-default" ng-show="panel.tab === 2">-->
+	  			<!-- length in array -->
+				<!-- <p ng-show="item.sisters.length">You have sister</p>
+			</div> -->
+
+			<!-- <div class="panel panel-default" ng-show="panel.tab === 3"> -->
+	  			<!-- images with ng-src -->
+				<!-- <img ng-src="{{item.image}}" width="200px">
+			</div>
+		</section> -->
 		
-		<!-- filter uppercase,orderBy, date, currency etc google it-->
-		<p>Your name again {{item.name | uppercase}}</p>
 
-		<!-- length in array -->
-		<p ng-show="item.sisters.length">You have sister</p>
-
-		<!-- images with ng-src -->
-		<img ng-src="{{item.image}}" width="200px">
+		
 
 	</div>
 
 
-	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="assets/angular.min.js"></script>
 	<script type="text/javascript" src="controller/app.js"></script>
 </body>
 </html>

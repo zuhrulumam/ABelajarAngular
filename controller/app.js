@@ -15,7 +15,17 @@
 			'Yui',
 			'Mio'
 		],
-		image: 'images/azusa 7.jpg'
+		image: 'images/azusa 7.jpg',
+		comments: [
+			{
+				username: "Umam",
+				text: "Test comment1"
+			},
+			{
+				username: "Umam2",
+				text: "Test comment3"
+			},
+		]
 	},
 	{
 		name: "Azusa 2",
@@ -23,8 +33,39 @@
 		email: "zuhrulumam@gmail.com",
 		age: 21,
 		sisters: [],
-		image: 'images/azusa 9.jpg'
+		image: 'images/azusa 9.jpg',
+		comments: [
+			{
+				username: "Umam",
+				text: "Test comment1"
+			},
+			{
+				username: "Umam2",
+				text: "Test comment3"
+			},
+		]
 	},
 	];
+
+	app.controller('TabController', function(){
+		this.tab = 1;
+
+		this.setTab = function(tab){
+			this.tab = tab;
+		};
+
+		this.isSet = function(){
+			return this.tab;
+		};
+	});
+
+	app.controller('CommentController', function(){
+		this.comment = {};
+
+		this.addComment = function(item){
+			item.comments.push(this.comment);
+			this.comment = {};
+		};
+	});
 })();
 
