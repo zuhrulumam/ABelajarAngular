@@ -2,6 +2,7 @@
 <html lang="en" ng-app="BelajarAngular">
 <head>
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
 	<title>Belajar Angular</title>
 </head>
 <body ng-controller="appController as app"> <!-- controller and aliases -->
@@ -56,7 +57,7 @@
 			</li>
 			
   			<!-- forms -->
-	  		<form ng-controller="CommentController as CommentCtrl" ng-submit="CommentCtrl.addComment(item)">
+	  		<form name="commentForm" ng-controller="CommentController as CommentCtrl" ng-submit="commentForm.$valid && CommentCtrl.addComment(item)" novalidate>
 	  			<li>
 					<blockquote>
 						<b>Username : {{CommentCtrl.comment.username}}</b>
@@ -65,14 +66,15 @@
 				<li>
 				<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1">@</span>
-				  <input ng-model="CommentCtrl.comment.username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+				  <input ng-model="CommentCtrl.comment.username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1"required>
 				</div>
 
 				<div class="input-group">
-				  <textarea ng-model="CommentCtrl.comment.text" class="form-control" placeholder="comment" cols="100" rows="5"></textarea>
+				  <textarea ng-model="CommentCtrl.comment.text" class="form-control" placeholder="comment" cols="100" rows="5" required></textarea>
 	  			</div>
 
 	  			<input type='submit' value="Submit">
+	  			<!-- <div>commentForm is {{commentForm.$valid}}</div> -->
 	  		</form>
 		</div>
 
@@ -107,7 +109,9 @@
 		</section> -->
 		
 
-		
+		<!-- Using directive angular to use this u must run from web server, if you have node install http-server (run http-server path to app) or using netbenas IDE and Chrome Connector see more http://stackoverflow.com/questions/27742070/angularjs-error-cross-origin-requests-are-only-supported-for-protocol-schemes -->
+		<!-- Element -->
+		<item-name></item-name> 
 
 	</div>
 
