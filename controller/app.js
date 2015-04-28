@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('BelajarAngular', []);
+	var app = angular.module('BelajarAngular', ['singer']);
 
 	app.controller('appController', function(){
 		this.items = items;
@@ -77,7 +77,7 @@
 			// scope: {}, // {} = isolate, true = child, false/undefined = no change
 			// controller: function($scope, $element, $attrs, $transclude) {},
 			// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-			restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+			restrict: 'EA', // E = Element, A = Attribute, C = Class, M = Comment
 			// template: '',
 			templateUrl: 'name-template.html',
 			// replace: true,

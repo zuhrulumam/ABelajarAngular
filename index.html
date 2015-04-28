@@ -110,13 +110,35 @@
 		
 
 		<!-- Using directive angular to use this u must run from web server, if you have node install http-server (run http-server path to app) or using netbenas IDE and Chrome Connector see more http://stackoverflow.com/questions/27742070/angularjs-error-cross-origin-requests-are-only-supported-for-protocol-schemes -->
+
 		<!-- Element -->
 		<item-name></item-name> 
 
+		<!-- Atribute -->
+		<h3 item-name></h3>
+
+
+
+		
+
+
 	</div>
 
+		<!-- using API -->
+		<section ng-controller="SingerController as singerCtrl">
+			<div ng-repeat="singer in singerCtrl.description">
+				<p>{{singer.name}}</p>
+			</div>
+		</section>
+
+		<!-- Using controller in directive -->
+		<singer></singer>
+
+		<!-- Using dependencies  (angular.module('', ['someModule'])) 
+			 Using singer.js-->
 
 	<script type="text/javascript" src="assets/angular.min.js"></script>
 	<script type="text/javascript" src="controller/app.js"></script>
+	<script type="text/javascript" src="controller/singer.js"></script>
 </body>
 </html>
