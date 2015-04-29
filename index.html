@@ -1,144 +1,213 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="BelajarAngular">
-<head>
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/style.css">
-	<title>Belajar Angular</title>
-</head>
-<body ng-controller="appController as app"> <!-- controller and aliases -->
+    <head>
+        <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <title>Belajar Angular</title>
+    </head>
+    <body ng-controller="appController as app"> <!-- controller and aliases -->
+        <!-- Page Content -->
+        <div class="container center-block">
 
-	<div ng-repeat="item in app.items"> <!-- Looping -->
-		<!-- Get Item Object-->
-		<h2>{{item.name}}</h2>
-		<p>{{item.telp}}</p>
-		<p>{{item.email}}</p>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Learning AngularJs
+                        <small>Belajar AngularJs</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /.row -->
 
-		<!-- show/hide statement -->
-		<p ng-show="item.age > 17">Your age is {{item.age}}</p>
-		<p ng-show="item.age < 17">You are too young</p>
+            <div ng-repeat="item in app.items"> <!-- Looping -->
 
-		<!-- ng-click and ng-class behaviour -->
-		<ul class="nav nav-pills" ng-init="tab = 1">
-  			<li ng-class="{active:tab === 1}">
-  				<a href ng-click="tab = 1">Name</a>
-  			</li>
-  			<li ng-class="{active:tab === 2}">
-  				<a href ng-click="tab = 2">Sister</a>
-  			</li>
-  			<li ng-class="{active:tab === 3}">
-  				<a href ng-click="tab = 3">Image</a>
-  			</li>
-  			<li ng-class="{active:tab === 4}">
-  				<a href ng-click="tab = 4">Comment</a>
-  			</li>
-		</ul>
-		<!-- {{tab}} -->
-		<div class="panel panel-default" ng-show="tab === 1">
-	  			<!-- filter uppercase,orderBy, date, currency etc google it-->
-			 <p>Your name again {{item.name | uppercase}}</p>
-		</div>
+                <!-- Project One -->
+                <div class="row" >
+                    <div class="col-md-4" >
+                        <!-- Get Item Object-->
+                        <h2>
+                            {{item.name}} 
+                            <small>Belajar AngularJs</small>
+                        </h2>
+                        <p>{{item.telp}}</p>
+                        <p>{{item.email}}</p>
 
-		<div class="panel panel-default" ng-show="tab === 2">
-  			<!-- length in array -->
-			<p ng-show="item.sisters.length">You have sister</p>
-		</div>
+                        <!-- show/hide statement -->
+                        <p ng-show="item.age > 17">Your age is {{item.age}}</p>
+                        <p ng-show="item.age < 17">You are too young</p>
 
-		<div class="panel panel-default" ng-show="tab === 3">
-  			<!-- images with ng-src -->
-			<img ng-src="{{item.image}}" width="200px">
-		</div>
+                    </div>
+                    <div class="col-md-8"  style="text-align: center">
+                        <!-- ng-click and ng-class behaviour -->
+                        <ul class="nav nav-pills" ng-init="tab = 1">
+                            <li ng-class="{active:tab === 1}">
+                                <a href ng-click="tab = 1">Name</a>
+                            </li>
+                            <li ng-class="{active:tab === 2}">
+                                <a href ng-click="tab = 2">Sister</a>
+                            </li>
+                            <li ng-class="{active:tab === 3}">
+                                <a href ng-click="tab = 3">Image</a>
+                            </li>
+                            <li ng-class="{active:tab === 4}">
+                                <a href ng-click="tab = 4">Comment</a>
+                            </li>
+                        </ul>
+                        <!-- {{tab}} -->
+                        <div class="panel panel-default" ng-show="tab === 1">
+                            <!-- filter uppercase,orderBy, date, currency etc google it-->
+                            <p>Your name again {{item.name| uppercase}}</p>
+                        </div>
 
-		<div class="panel panel-default" ng-show="tab === 4">
-			<li ng-repeat="comment in item.comments">
-				<blockquote>
-					<b>Username : {{comment.username}}</b>
-					<p>{{comment.text}}</p>
-				</blockquote>
-			</li>
-			
-  			<!-- forms -->
-	  		<form name="commentForm" ng-controller="CommentController as CommentCtrl" ng-submit="commentForm.$valid && CommentCtrl.addComment(item)" novalidate>
-	  			<li>
-					<blockquote>
-						<b>Username : {{CommentCtrl.comment.username}}</b>
-						<p>{{CommentCtrl.comment.text}}</p>
-					</blockquote>
-				<li>
-				<div class="input-group">
-				  <span class="input-group-addon" id="basic-addon1">@</span>
-				  <input ng-model="CommentCtrl.comment.username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1"required>
-				</div>
+                        <div class="panel panel-default" ng-show="tab === 2">
+                            <!-- length in array -->
+                            <p ng-show="item.sisters.length">You have sister</p>
+                        </div>
 
-				<div class="input-group">
-				  <textarea ng-model="CommentCtrl.comment.text" class="form-control" placeholder="comment" cols="100" rows="5" required></textarea>
-	  			</div>
+                        <div class="panel panel-default" ng-show="tab === 3">
+                            <!-- images with ng-src -->
+                            <img ng-src="{{item.image}}" width="200px">
+                        </div>
 
-	  			<input type='submit' value="Submit">
-	  			<!-- <div>commentForm is {{commentForm.$valid}}</div> -->
-	  		</form>
-		</div>
+                        <div class="panel panel-default" ng-show="tab === 4"  style="text-align: left">
 
-		<!-- ng-click and ng-class behaviour with controller -->
-		<!-- <section ng-controller="TabController as panel">
-			<ul class="nav nav-pills" >
-	  			<li ng-class="{active:panel.isIsset()}">
-	  				<a href ng-click="panel.setTab(1)">Name</a>
-	  			</li>
-	  			<li ng-class="{active:panel.isIsset()}">
-	  				<a href ng-click="panel.setTab(2)">Sister</a>
-	  			</li>
-	  			<li ng-class="{active:panel.isIsset()}">
-	  				<a href ng-click="panel.setTab(3)">Image</a>
-	  			</li>
-			</ul> -->
-			
-			<!-- <div class="panel panel-default" ng-show="panel.tab === 1"> -->
-	  			<!-- filter uppercase,orderBy, date, currency etc google it-->
-				<!-- <p>Your name again {{item.name | uppercase}}</p>
-			</div>
+                            <div class="detailBox">
+                                <div class="titleBox">
+                                    <label>Comment Box</label>
+                                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="commentBox">
 
-			<div class="panel panel-default" ng-show="panel.tab === 2">-->
-	  			<!-- length in array -->
-				<!-- <p ng-show="item.sisters.length">You have sister</p>
-			</div> -->
+                                    <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                                <div class="actionBox">
+                                    <ul class="commentList">
+                                        <li ng-repeat="comment in item.comments">
+                                            <div class="col-md-2">
+                                                <b>{{comment.username}}</b>
+                                            </div>
+                                            <div class="commentText col-md-10">
+                                                <p>{{comment.text}}</p> 
+                                            </div>
 
-			<!-- <div class="panel panel-default" ng-show="panel.tab === 3"> -->
-	  			<!-- images with ng-src -->
-				<!-- <img ng-src="{{item.image}}" width="200px">
-			</div>
-		</section> -->
-		
-
-		<!-- Using directive angular to use this u must run from web server, if you have node install http-server (run http-server path to app) or using netbenas IDE and Chrome Connector see more http://stackoverflow.com/questions/27742070/angularjs-error-cross-origin-requests-are-only-supported-for-protocol-schemes -->
-
-		<!-- Element -->
-		<item-name></item-name> 
-
-		<!-- Atribute -->
-		<h3 item-name></h3>
+                                        </li>
+                                    </ul>
+                                    <!--                                    <ul class="commentList">
+                                                                            <li>
+                                                                                <div class="commenterImage">
+                                                                                    <img src="http://lorempixel.com/50/50/people/6" />
+                                                                                </div>
+                                                                                <div class="commentText">
+                                                                                    <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                                    
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>-->
 
 
+                                    <!-- forms -->
+                                    <form class="form-inline" role="form" name="commentForm" ng-controller="CommentController as CommentCtrl" ng-submit="commentForm.$valid && CommentCtrl.addComment(item)" novalidate>
+                                        <ul class="commentList">
+                                            <li>
+                                                <div class="col-md-2">
+                                                    <b>{{CommentCtrl.comment.username}}</b>
+                                                </div>
+                                                <div class="commentText col-md-10">
+                                                    <p>{{CommentCtrl.comment.text}}</p> 
+                                                </div>
 
-		
+                                            </li>
+                                        </ul>
+
+                                        <div class="form-group col-md-4">                                        
+                                            <input  ng-model="CommentCtrl.comment.username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" required>
+                                        </div>
+
+                                        <div class="form-group col-md-8">
+                                            <!--<textarea ng-model="CommentCtrl.comment.text" class="form-control" placeholder="comment" required></textarea>-->
+                                            <input ng-model="CommentCtrl.comment.text" class="form-control" placeholder="comment" required>
+                                        </div>
+
+                                        <input type="submit" value="Submit" class="btn btn-success">
+                                        <!-- <div>commentForm is {{commentForm.$valid}}</div> -->
+                                    </form>
+                                </div>
 
 
-	</div>
+                            </div>
 
-		<!-- using API -->
-		<section ng-controller="SingerController as singerCtrl">
-			<div ng-repeat="singer in singerCtrl.description">
-				<p>{{singer.name}}</p>
-			</div>
-		</section>
+                            <!-- ng-click and ng-class behaviour with controller -->
+                            <!-- <section ng-controller="TabController as panel">
+                                    <ul class="nav nav-pills" >
+                                            <li ng-class="{active:panel.isIsset()}">
+                                                    <a href ng-click="panel.setTab(1)">Name</a>
+                                            </li>
+                                            <li ng-class="{active:panel.isIsset()}">
+                                                    <a href ng-click="panel.setTab(2)">Sister</a>
+                                            </li>
+                                            <li ng-class="{active:panel.isIsset()}">
+                                                    <a href ng-click="panel.setTab(3)">Image</a>
+                                            </li>
+                                    </ul> -->
 
-		<!-- Using controller in directive -->
-		<singer></singer>
+                            <!-- <div class="panel panel-default" ng-show="panel.tab === 1"> -->
+                            <!-- filter uppercase,orderBy, date, currency etc google it-->
+                            <!-- <p>Your name again {{item.name | uppercase}}</p>
+                    </div>
+    
+                    <div class="panel panel-default" ng-show="panel.tab === 2">-->
+                            <!-- length in array -->
+                            <!-- <p ng-show="item.sisters.length">You have sister</p>
+                    </div> -->
 
-		<!-- Using dependencies  (angular.module('', ['someModule'])) 
-			 Using singer.js-->
+                            <!-- <div class="panel panel-default" ng-show="panel.tab === 3"> -->
+                            <!-- images with ng-src -->
+                            <!-- <img ng-src="{{item.image}}" width="200px">
+                    </div>
+            </section> -->
 
-	<script type="text/javascript" src="assets/angular.min.js"></script>
-	<script type="text/javascript" src="controller/app.js"></script>
-	<script type="text/javascript" src="controller/singer.js"></script>
-</body>
+
+                            <!-- Using directive angular to use this u must run from web server, if you have node install http-server (run http-server path to app) or using netbenas IDE and Chrome Connector see more http://stackoverflow.com/questions/27742070/angularjs-error-cross-origin-requests-are-only-supported-for-protocol-schemes -->
+
+                            <!-- Element -->
+                            <item-name></item-name> 
+
+                            <!-- Atribute -->
+                            <h3 item-name></h3>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <hr>
+                <!-- using API -->
+                <section ng-controller="SingerController as singerCtrl">
+                    <div ng-repeat="singer in singerCtrl.description">
+                        <p>{{singer.name}}</p>
+                    </div>
+                </section>
+
+                <!-- Using controller in directive -->
+                <singer></singer>
+
+                <!-- Using dependencies  (angular.module('', ['someModule'])) 
+                         Using singer.js-->
+                <!-- Footer -->
+                <footer>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>By Muhammad Zuhrul Umam</p>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </footer>
+
+            </div>
+            <!-- /.container -->		
+
+            <script type="text/javascript" src="assets/angular.min.js"></script>
+            <script type="text/javascript" src="controller/app.js"></script>
+            <script type="text/javascript" src="controller/singer.js"></script>
+    </body>
 </html>
