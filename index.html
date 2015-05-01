@@ -27,7 +27,6 @@
                         <!-- Get Item Object-->
                         <h2>
                             {{item.name}} 
-                            <small>Belajar AngularJs</small>
                         </h2>
                         <p>{{item.telp}}</p>
                         <p>{{item.email}}</p>
@@ -179,35 +178,39 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
-                <hr>
-                <!-- using API -->
+            </div>
+            <hr>
+            <div class="col-lg-6">
+                <!-- using API (retrieve data from json)-->
                 <section ng-controller="SingerController as singerCtrl">
                     <div ng-repeat="singer in singerCtrl.description">
                         <p>{{singer.name}}</p>
                     </div>
                 </section>
+            </div>
 
+            <div class="col-lg-6">
                 <!-- Using controller in directive -->
                 <singer></singer>
-
-                <!-- Using dependencies  (angular.module('', ['someModule'])) 
-                         Using singer.js-->
-                <!-- Footer -->
-                <footer>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p>By Muhammad Zuhrul Umam</p>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </footer>
-
             </div>
-            <!-- /.container -->		
 
-            <script type="text/javascript" src="assets/angular.min.js"></script>
-            <script type="text/javascript" src="controller/app.js"></script>
-            <script type="text/javascript" src="controller/singer.js"></script>
+            <!-- Using dependencies  (angular.module('', ['someModule'])) 
+                     Using singer.js-->
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>By Muhammad Zuhrul Umam</p>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </footer>
+
+        </div>
+        <!-- /.container -->		
+
+        <script type="text/javascript" src="assets/angular.min.js"></script>
+        <script type="text/javascript" src="controller/app.js"></script>
+        <script type="text/javascript" src="controller/singer.js"></script>
     </body>
 </html>
